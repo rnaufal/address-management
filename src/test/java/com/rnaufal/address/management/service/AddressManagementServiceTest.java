@@ -219,6 +219,4 @@ public class AddressManagementServiceTest {
         cep.setStreet("<<STREET>>");
         return cep;
     }
-
-
 }
