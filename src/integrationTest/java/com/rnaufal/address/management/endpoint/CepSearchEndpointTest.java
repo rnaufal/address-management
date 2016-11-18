@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
+import static com.rnaufal.address.management.endpoint.CepFactory.createCep;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.mockito.Mockito.doReturn;
@@ -44,7 +45,7 @@ public class CepSearchEndpointTest {
 
     @Test
     public void shouldFindCepWithSuccess() throws Exception {
-        Cep cep = buildCep();
+        Cep cep = createCep();
 
         doReturn(cep).when(cepSearchService).findBy(cep.getValue());
 
@@ -70,16 +71,5 @@ public class CepSearchEndpointTest {
         doThrow(CepNotFoundException.class).when(cepSearchService).findBy(cep);
 
         mockMvc.perform(get("/cep/{cep}", cep)).andExpect(status().isBadRequest());
-    }
-
-    private Cep buildCep() {
-        Cep cep = new Cep();
-        cep.setId(10L);
-        cep.setValue("12345678");
-        cep.setCity("<<CITY>>");
-        cep.setDistrict("<<DISTRICT>>");
-        cep.setEstate("<<ESTATE>>");
-        cep.setStreet("<<STREET>>");
-        return cep;
     }
 }

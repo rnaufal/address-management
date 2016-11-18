@@ -21,7 +21,7 @@ public class ReplaceRightDigitToZeroCepGenerator implements CepGenerator {
 
     public ReplaceRightDigitToZeroCepGenerator(final String cep) {
         checkArgument(StringUtils.isNotBlank(cep), "cep cannot be null");
-        
+
         this.cep = new StringBuilder(cep);
         this.currentIndex = cep.length();
     }
@@ -35,7 +35,7 @@ public class ReplaceRightDigitToZeroCepGenerator implements CepGenerator {
         this.cep.setCharAt(currentIndex, '0');
         String newCep = this.cep.toString();
 
-        LOGGER.info("Cep {} transformed to {}", cep, newCep);
+        LOGGER.info("Cep {} was generated", newCep);
 
         return Optional.of(newCep);
     }

@@ -18,8 +18,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.samePropertyValuesAs;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by rnaufal on 16/11/16.
@@ -51,6 +50,7 @@ public class AddressManagementServiceTest {
         Address actual = addressManagementService.createAddress(buildAddress());
 
         assertThat(actual, samePropertyValuesAs(expected));
+        verify(addressRepository).save(actual);
     }
 
     @Test(expected = CepNotFoundException.class)
@@ -135,6 +135,7 @@ public class AddressManagementServiceTest {
         Address deleted = addressManagementService.delete(id);
 
         assertThat(deleted, samePropertyValuesAs(address));
+        verify(addressRepository).delete(deleted);
     }
 
     @Test(expected = AddressNotFoundException.class)
@@ -177,6 +178,7 @@ public class AddressManagementServiceTest {
         assertThat(actualCep.getStreet(), is(equalTo(expected.getCep().getStreet())));
         assertThat(actual.getComplement(), is(equalTo(updatedAddress.getComplement())));
         assertThat(actual.getNumber(), is(equalTo(updatedAddress.getNumber())));
+        verify(addressRepository).save(actual);
     }
 
     @Test(expected = CepNotFoundException.class)
