@@ -42,6 +42,7 @@ public class Address implements Serializable {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CEP_ID", referencedColumnName = "CEP_ID", nullable = false)
+    @NotNull(message = "{error.address.cep.invalid}")
     @Valid
     public Cep getCep() {
         return cep;

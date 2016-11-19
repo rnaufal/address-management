@@ -32,34 +32,34 @@ public class DefaultExceptionHandler {
 
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseBody
-    public ResponseEntity<List<ResponseMessage>> handleValidationErrors(ConstraintViolationException ex) {
-        List<ResponseMessage> errors = ex
+    public ResponseEntity<ErrorMessages> handleValidationErrors(ConstraintViolationException ex) {
+        List<ErrorMessage> errors = ex
                 .getConstraintViolations()
                 .stream()
-                .map(constraintViolation -> new ResponseMessage(constraintViolation.getMessage()))
+                .map(constraintViolation -> new ErrorMessage(constraintViolation.getMessage()))
                 .collect(Collectors.toList());
-        return ResponseEntity.badRequest().body(errors);
+        return ResponseEntity.badRequest().body(new ErrorMessages(errors));
     }
 
     @ExceptionHandler({CepNotFoundException.class,
             AddressNotFoundException.class})
     @ResponseBody
-    public ResponseEntity<ResponseMessage> handleException(AddressException ex) {
+    public ResponseEntity<ErrorMessages> handleException(AddressException ex) {
         return ResponseEntity
                 .badRequest()
-                .body(new ResponseMessage(ex.getMessage()));
+                .body(new ErrorMessages(new ErrorMessage(ex.getMessage())));
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseBody
-    public ResponseEntity<List<ResponseMessage>> handleValidationErrors(MethodArgumentNotValidException ex) {
-        List<ResponseMessage> errors = ex
+    public ResponseEntity<ErrorMessages> handleValidationErrors(MethodArgumentNotValidException ex) {
+        List<ErrorMessage> errors = ex
                 .getBindingResult()
                 .getFieldErrors()
                 .stream()
-                .map(error -> new ResponseMessage(error.getDefaultMessage()))
+                .map(error -> new ErrorMessage(error.getDefaultMessage()))
                 .collect(Collectors.toList());
-        return ResponseEntity.badRequest().body(errors);
+        return ResponseEntity.badRequest().body(new ErrorMessages(errors));
     }
 
     @ExceptionHandler(Exception.class)
@@ -69,6 +69,6 @@ public class DefaultExceptionHandler {
 
         return ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(new ResponseMessage(defaultErrorMessage));
+                .body(new ErrorMessages(new ErrorMessage(defaultErrorMessage)));
     }
 }

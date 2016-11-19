@@ -106,6 +106,18 @@ public class AddressManagementEndpointTest {
     }
 
     @Test
+    public void shouldReturnBadRequestWhenCepInformationNotPresent() throws Exception {
+        Address address = buildAddress();
+        address.setCep(null);
+
+        mockMvc.perform(post("/address")
+                .content(toJson(address))
+                .contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));
+    }
+
+    @Test
     public void shouldUpdateAddressWithSuccess() throws Exception {
         Address address = buildAddress();
         address.setId(15L);

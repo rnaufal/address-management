@@ -53,6 +53,7 @@ task integrationTest(type: Test) {
     classpath = sourceSets.integrationTest.runtimeClasspath
 }
 check.dependsOn integrationTest
+bootRun.dependsOn check
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web") {
