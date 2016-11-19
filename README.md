@@ -1,15 +1,15 @@
-**Gerenciamento de endereços**
+# Gerenciamento de endereços
 
 A aplicação contém web-services para busca de CEP e gerenciamento de endereços, que permite incluir, 
 consultar, atualizar e deletar um endereço. Este projeto possui web-services REST que consomem
 e produzem respostas em JSON. Foi escrito utilizando Java 1.8 e Gradle para *build* do projeto.
 
-**Pré-requisitos**
+## Pré-requisitos
 
 - Java 1.8 (de preferência 1.8.0_111)
 - Definição da variável de ambiente JAVA_HOME, que aponta para a instalação do JAVA
 
-**Configuração e Build**
+## Configuração e Build
 
 As seguintes tecnologias foram utilizadas:
 
@@ -35,7 +35,7 @@ A aplicação deve ser construído na sua raiz com o seguinte comando:
 
 Esse comando utiliza o Gradle *wrapper* para baixar a distribuição do Gradle apropriada.
 
-**Iniciando a aplicação**
+## Iniciando a aplicação
 
 A aplicação deve ser na raiz do projeto address-management com o seguinte comando Gradle: ***./gradlew bootRun***
 
@@ -44,7 +44,7 @@ Esse comando irá realizar o *build* da aplicação, executar os testes unitári
 
 Os logs da aplicação se encontram em */tmp/logs/address-management/address-management.log*
 
-**Sobre os testes unitários e integrados**
+## Sobre os testes unitários e integrados
 
 Os testes unitários podem ser executados individualmente através do seguinte comando Gradle: 
 
@@ -54,7 +54,7 @@ Os testes integrados podem ser executados individualmente através do comando Gr
  
 ***./gradlew integrationTest*** 
 
-**Arquitetura e padrões**
+## Arquitetura e padrões
 
 É uma aplicação que utiliza como base o framework SpringBoot. 
 
@@ -88,9 +88,9 @@ As classes de nome *Cep* e *Address* são as entidades do sistema. O endereço p
 número e complemento. O endereço também possui um CEP, portanto, a classe *Address* 
 possui uma referência para a classe *Cep*.
 
-Foi criado um relacionamento unidirecional de *Address* para *Cep*, já que o CEP não possui número e complemento.
+Um relacionamento unidirecional de *Address* para *Cep* foi criado, já que o CEP não possui número e complemento.
 
-Foi criada uma anotação para validar o CEP utilizada pelo *HibernateValidator* para validar as requisições aos web-services REST
+Uma anotação para validar o CEP foi criada para ser utilizada pelo *HibernateValidator* para validar as requisições aos web-services REST
 com CEP mal formado.
 
 As dependências entre as classes são injetadas via construtor (injeção via construtor).
@@ -100,7 +100,7 @@ utilização de mocks durante os testes unitários.
 As classes são desacopladas de uma implementação específica e interagem apenas com a interface, evidenciando
 como elas colaboram umas com as outras.
 
-**Serviços REST**
+## Serviços REST
 
 *GET* **http://localhost:8080/cep/{cep}**
 
@@ -109,40 +109,50 @@ Respostas
 ● 200: Um CEP no formato JSON
 
 Exemplo: http://localhost:8080/cep/61903123
-`{
+
+```json
+{
   "id": 6,
   "value": "61903000",
   "street": "Rua Manoel Costa Barros",
   "district": "Antônio Justa",
   "city": "Maracanaú",
   "estate": "CE"
-}`
+}
+```
 
 ● 400: Cep inválido
-`{"errors": [
+
+```json
+{"errors": [
     {
       "error": "CEP inválido"
     }
   ]
-}`
+}
+```
 
 ● 400: CEP não encontrado
 
-`{"errors": [ 
+```json
+{"errors": [ 
     {
       "error": "Cep=[{cep}] nao encontrado"
     }
   ]
-}`
+}
+```
 
 ● 500: Erro interno
 
-`{"errors": [ 
+```json
+{"errors": [ 
     {
       "error": "Erro inesperado. Tente novamente."
     }
   ]
-}`
+}
+```
 
 *POST* **http://localhost:8080/address**
 
@@ -150,7 +160,8 @@ Aceita application/json;charset=UTF-8
 
 Recebe e inclui um endereço na base de dados
 
-`{
+```json
+{
   "cep": {
     "value": "78715155",
     "street": "Rua Natal",
@@ -160,13 +171,15 @@ Recebe e inclui um endereço na base de dados
   },
   "complement": "Perto do Shopping novo",
   "number": "79"
-}`
+}
+```
 
 Respostas
 
 ● 201: JSON do endereço criado
 
-`{
+```json
+{
   "id": 1,
   "cep": {
     "id": 2,
@@ -178,14 +191,16 @@ Respostas
   },
   "complement": "Perto do Shopping novo",
   "number": "79"
-}`
+}
+```
 
 Header *Location* contém a URL do endereço criado: http://localhost:8080/address/1
 
 ● 200: Caso o endereço com mesmo CEP, complemento e número exista, ele é retornado e um outro igual
 não é criado
 
-`{
+```json
+{
   "id": 1,
   "cep": {
     "id": 2,
@@ -197,12 +212,14 @@ não é criado
   },
   "complement": "Perto do Shopping novo",
   "number": "79"
-}`
+}
+```
 
 ● 400: Caso um ou mais dos atributos obrigatórios não seja fornecido, mensagens de erro são
 retornadas
 
-`{
+```json
+{
   "cep": {
     "value": "78715155",
     "street": "Rua Natal",
@@ -210,11 +227,13 @@ retornadas
   },
   "complement": "Perto do Shopping novo",
   "number": "79"
-}`
+}
+```
 
 Resposta: 
 
-`{
+```json
+{
   "errors": [
     { 
       "error": "Cidade inválida"
@@ -223,11 +242,13 @@ Resposta:
       "error": "Estado inválido"
     }
   ]
-}`
+}
+```
 
 ● 400: Caso a informação de CEP seja inválida, um erro é retornado
 
-`{
+```json
+{
   "cep": {
     "value": "7871-5155",
     "street": "Rua Natal",
@@ -237,9 +258,12 @@ Resposta:
   },
   "complement": "Perto do Shopping novo",
   "number": "79"
-}`
+}
+```
 
-Resposta: 
+Resposta:
+
+```json
 {
   "errors": [
     {
@@ -247,10 +271,12 @@ Resposta:
     }
   ]
 }
+```
 
 ● 400: Caso a informação de CEP não exista na base de dados, um erro também é retornado
 
-`{
+```json
+{
   "cep": {
     "value": "12345678",
     "street": "Rua Natal",
@@ -260,26 +286,31 @@ Resposta:
   },
   "complement": "Perto do Shopping novo",
   "number": "79"
-}`
+}
+```
 
 Resposta: 
 
-`{
+```json
+{
   "errors": [
     {
       "error": "Cep=[12345678] nao encontrado"
     }
   ]
-}`
+}
+```
 
 ● 500: Erro interno
 
-`{"errors": [ 
+```json
+{"errors": [ 
     {
       "error": "Erro inesperado. Tente novamente."
     }
   ]
-}`
+}
+```
 
 *POST* **http://localhost:8080/address/{id}**
 
@@ -292,7 +323,8 @@ Recebe e atualiza um endereço na base de dados
 
 Exemplo: http://localhost:8080/address/1
 
-`{
+```json
+{
   "cep": {
     "value": "68909608",
     "street": "Alameda Colibrir",
@@ -302,13 +334,15 @@ Exemplo: http://localhost:8080/address/1
   },
   "complement": "Perto da praça",
   "number": "34"
-}`
+}
+```
 
 Resposta:
 
 ● 200: JSON do endereço atualizado
 
-`{
+```json
+{
   "id": 1,
   "cep": {
     "id": 3,
@@ -320,13 +354,15 @@ Resposta:
   },
   "complement": "Perto da praça",
   "number": "34"
-}`
+}
+```
 
 ● 400: Caso o endereço a ser atualizado não exista na base de dados, um erro é retornado
 
 Exemplo: http://localhost:8080/address/10
 
-`{
+```json
+{
   "cep": {
     "value": "68909608",
     "street": "Alameda Colibrir",
@@ -336,17 +372,20 @@ Exemplo: http://localhost:8080/address/10
   },
   "complement": "Perto da praça",
   "number": "34"
-}`
+}
+```
 
 Resposta: 
 
-`{
+```json
+{
   "errors": [
     {
       "error": "Endereco com id=[2] nao encontrado"
     }
   ]
-}`
+}
+```
 
 Na atualização do endereço, os mesmos erros de validação do CEP que ocorrem no processo de criação
 do endereço também são retornados.
@@ -371,7 +410,8 @@ Respostas
 
 Exemplo: http://localhost:8080/address/1
 
-`{
+```json
+{
   "id": 1,
   "cep": {
     "id": 3,
@@ -383,7 +423,8 @@ Exemplo: http://localhost:8080/address/1
   },
   "complement": "Perto da praça",
   "number": "34"
-}`
+}
+```
 
 ● 400: Caso o endereço não exista na base de dados, um erro é retornado
 
@@ -391,22 +432,26 @@ Exemplo: http://localhost:8080/address/20
 
 Resposta: 
 
-`{
+```json
+{
   "errors": [
     {
       "error": "Endereco com id=[2] nao encontrado"
     }
   ]
-}`
+}
+```
 
 ● 500: Erro interno
 
-`{"errors": [ 
+```json
+{"errors": [ 
     {
       "error": "Erro inesperado. Tente novamente."
     }
   ]
-}`
+}
+```
 
 *DELETE* **http://localhost:8080/address/{id}**
 
@@ -419,7 +464,8 @@ Respostas
 
 Exemplo: http://localhost:8080/address/1
 
-`{
+```json
+{
   "id": 1,
   "cep": {
     "id": 3,
@@ -431,7 +477,8 @@ Exemplo: http://localhost:8080/address/1
   },
   "complement": "Perto da praça",
   "number": "34"
-}`
+}
+```
 
 ● 400: Caso o endereço não exista na base de dados para ser removido, um erro é retornado
 
@@ -439,10 +486,12 @@ Exemplo: http://localhost:8080/address/25
 
 Resposta: 
 
-`{
+```json
+{
   "errors": [
     {
       "error": "Endereco com id=[25] nao encontrado"
     }
   ]
-}`
+}
+```
