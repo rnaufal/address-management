@@ -315,6 +315,7 @@ Resposta:
 *POST* **http://localhost:8080/address/{id}**
 
 Parâmetro
+
 ● id: Id do endereço, obrigatório
 
 Aceita application/json;charset=UTF-8
@@ -392,16 +393,19 @@ do endereço também são retornados.
 
 ● 500: Erro interno
 
-`{"errors": [ 
+```json
+{"errors": [ 
     {
       "error": "Erro inesperado. Tente novamente."
     }
   ]
-}`
+}
+```
 
 *GET* **http://localhost:8080/address/{id}**
 
 Parâmetro
+
 ● id: Id do endereço, obrigatório
 
 Respostas
@@ -456,6 +460,7 @@ Resposta:
 *DELETE* **http://localhost:8080/address/{id}**
 
 Parâmetro
+
 ● id: Id do endereço, obrigatório
 
 Respostas
