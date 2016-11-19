@@ -46,7 +46,7 @@ Esse comando realiza as seguintes tarefas:
 
 Os logs da aplicação se encontram em */tmp/logs/address-management/address-management.log*
 
-## Sobre os testes unitários e integrados
+## Testes unitários e integrados
 
 Os testes unitários podem ser executados individualmente através do seguinte comando Gradle: 
 
