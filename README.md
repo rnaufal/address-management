@@ -24,14 +24,14 @@ As seguintes tecnologias foram utilizadas:
 - Logback para logs;
 - JSON;
 - Google Guava para manter invariantes dos métodos (pré-condições sobre parâmetros que não podem ser nulos);
-- JUnit 4, Mockito and Spring-test para testes unitários e de integração;
+- JUnit 4, Mockito e Spring-test para testes unitários e de integração;
 - Hamcrest matchers para tornar os *asserts* nos testes mais elegantes;
 - jsonpath para fazer *asserts* do JSON retornado pelos web-services REST;
 - Gradle para *build* do projeto
 
 A aplicação deve ser construído na sua raiz com o seguinte comando:
 
-***./gradlew clean build*** (em sistemas Unix) and ***./gradlew.bat clean build*** (Windows)
+***./gradlew clean build*** (em sistemas Unix) e ***./gradlew.bat clean build*** (Windows)
 
 Esse comando utiliza o Gradle *wrapper* para baixar a distribuição do Gradle apropriada.
 
@@ -60,7 +60,7 @@ Os testes integrados podem ser executados individualmente através do comando Gr
 
 A aplicação está modelada com os seguintes padrões e separação de camadas:
 
-- *MVC*: *Endpoint* (*Controllers* REST), *Service*, *Repository* and *Domain*.
+- *MVC*: *Endpoint* (*Controllers* REST), *Service*, *Repository* e *Domain*.
 
 - *Endpoint (Controller)* : São responsáveis por receber a requisição http, consumir e produzir
  JSON e enviar a requisição para algum serviço para processamento. Exemplo: classe CepSearchEndpoint
