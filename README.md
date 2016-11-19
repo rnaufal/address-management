@@ -1,6 +1,6 @@
 **Gerenciamento de endereços**
 
-O projeto contém um módulo para busca de cep e gerenciamento de endereços, que permite incluir, 
+A aplicação contém web-services para busca de CEP e gerenciamento de endereços, que permite incluir, 
 consultar, atualizar e deletar um endereço. Este projeto possui web-services REST que consomem
 e produzem respostas em JSON. Foi escrito utilizando Java 1.8 e Gradle para *build* do projeto.
 
