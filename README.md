@@ -42,7 +42,7 @@ A aplicação deve ser na raiz do projeto address-management com o seguinte coma
 Esse comando realiza as seguintes tarefas: 
 
 - *build* da aplicação, execução dos testes unitários e integrados;
-- *Deploy* da aplicação no Jetty na porta 8080 se todos os testes unitários e integrados são executados com sucesso;
+- *Deploy* da aplicação no Jetty na porta 8080 se todos os testes unitários e integrados forem executados com sucesso;
 
 Os logs da aplicação se encontram em */tmp/logs/address-management/address-management.log*
 
@@ -422,9 +422,6 @@ Resposta:
 }
 ```
 
-Na atualização do endereço, os mesmos erros de validação do CEP que ocorrem no processo de criação
-do endereço também são retornados.
-
 ● 500: Erro interno
 
 ```json
@@ -436,6 +433,9 @@ do endereço também são retornados.
   ]
 }
 ```
+
+Na atualização do endereço, os mesmos erros de validação do CEP que ocorrem no processo de criação
+do endereço também são retornados.
 
 *GET* **http://localhost:8080/address/{id}**
 
