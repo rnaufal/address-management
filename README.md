@@ -98,8 +98,10 @@ com CEP mal formado.
 A classe *ReplaceRightDigitToZeroCepGenerator* é responsável por implementar a regra de substituição de um dígito da direita
 para a esquerda do CEP por zero. Ela é utilizada pelo serviço de busca de CEP *CepSearchServiceImpl* durante a busca de CEP.
 
-Esse serviço é utilizado também pelo serviço de busca de endereços, *AddressManagementServiceImpl* para validar buscar e validar
+Esse serviço é utilizado também pelo serviço de busca de endereços, *AddressManagementServiceImpl* para validar e buscar
 a existência do CEP durante as operações de CRUD de endereço.
+
+A entidade *Cep* não é atualizada, apenas a entidade *Address* que possui um *Cep*.
 
 As dependências entre as classes são injetadas via construtor (injeção via construtor).
 
@@ -354,7 +356,7 @@ Parâmetro
 
 Aceita application/json;charset=UTF-8
 
-Recebe e atualiza um endereço na base de dados
+Recebe e atualiza um endereço (seu CEP, número ou complemento) na base de dados
 
 Exemplo: http://localhost:8080/address/1
 
