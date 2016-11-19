@@ -147,6 +147,8 @@ Exemplo: http://localhost:8080/cep/61903123
 
 ● 400: Cep inválido
 
+Exemplo: http://localhost:8080/cep/123a4567
+
 ```json
 {
   "errors": [
@@ -159,11 +161,13 @@ Exemplo: http://localhost:8080/cep/61903123
 
 ● 400: CEP não encontrado
 
+Exemplo: http://localhost:8080/cep/12345678
+
 ```json
 {
   "errors": [
     {
-      "error": "Cep=[{cep}] nao encontrado"
+      "error": "Cep=[12345678] nao encontrado"
     }
   ]
 }
