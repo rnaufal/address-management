@@ -39,8 +39,10 @@ Esse comando utiliza o Gradle *wrapper* para baixar a distribuição do Gradle a
 
 A aplicação deve ser na raiz do projeto address-management com o seguinte comando Gradle: ***./gradlew bootRun***
 
-Esse comando irá realizar o *build* da aplicação, executar os testes unitários e integrados. A aplicação
-é iniciado se todos os testes unitários e integrados são executados com sucesso.
+Esse comando realiza as seguintes tarefas: 
+
+- *build* da aplicação, execução dos testes unitários e integrados;
+- *Deploy* da aplicação no Jetty na porta 8080 se todos os testes unitários e integrados são executados com sucesso;
 
 Os logs da aplicação se encontram em */tmp/logs/address-management/address-management.log*
 
