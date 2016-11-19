@@ -100,7 +100,7 @@ utilização de mocks durante os testes unitários.
 As classes são desacopladas de uma implementação específica e interagem apenas com a interface, evidenciando
 como elas colaboram umas com as outras.
 
-*Serviços REST*
+**Serviços REST**
 
 *GET* **http://localhost:8080/cep/{cep}**
 
@@ -133,8 +133,8 @@ Exemplo: http://localhost:8080/cep/61903123
       "error": "Cep=[{cep}] nao encontrado"
     }
   ]
-}
-`
+}`
+
 ● 500: Erro interno
 
 `{"errors": [ 
@@ -249,6 +249,7 @@ Resposta:
 }
 
 ● 400: Caso a informação de CEP não exista na base de dados, um erro também é retornado
+
 `{
   "cep": {
     "value": "12345678",
@@ -262,6 +263,7 @@ Resposta:
 }`
 
 Resposta: 
+
 `{
   "errors": [
     {
@@ -271,6 +273,7 @@ Resposta:
 }`
 
 ● 500: Erro interno
+
 `{"errors": [ 
     {
       "error": "Erro inesperado. Tente novamente."
@@ -304,6 +307,7 @@ Exemplo: http://localhost:8080/address/1
 Resposta:
 
 ● 200: JSON do endereço atualizado
+
 `{
   "id": 1,
   "cep": {
@@ -321,6 +325,7 @@ Resposta:
 ● 400: Caso o endereço a ser atualizado não exista na base de dados, um erro é retornado
 
 Exemplo: http://localhost:8080/address/10
+
 `{
   "cep": {
     "value": "68909608",
@@ -334,6 +339,7 @@ Exemplo: http://localhost:8080/address/10
 }`
 
 Resposta: 
+
 `{
   "errors": [
     {
@@ -346,6 +352,7 @@ Na atualização do endereço, os mesmos erros de validação do CEP que ocorrem
 do endereço também são retornados.
 
 ● 500: Erro interno
+
 `{"errors": [ 
     {
       "error": "Erro inesperado. Tente novamente."
@@ -383,6 +390,7 @@ Exemplo: http://localhost:8080/address/1
 Exemplo: http://localhost:8080/address/20
 
 Resposta: 
+
 `{
   "errors": [
     {
@@ -392,6 +400,7 @@ Resposta:
 }`
 
 ● 500: Erro interno
+
 `{"errors": [ 
     {
       "error": "Erro inesperado. Tente novamente."
@@ -429,6 +438,7 @@ Exemplo: http://localhost:8080/address/1
 Exemplo: http://localhost:8080/address/25
 
 Resposta: 
+
 `{
   "errors": [
     {
