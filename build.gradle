@@ -52,6 +52,7 @@ task integrationTest(type: Test) {
     testClassesDir = sourceSets.integrationTest.output.classesDir
     classpath = sourceSets.integrationTest.runtimeClasspath
 }
+
 check.dependsOn integrationTest
 bootRun.dependsOn check
 
