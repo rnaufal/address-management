@@ -66,14 +66,14 @@ A aplicação está modelada com os seguintes padrões e separação de camadas:
  JSON e enviar a requisição para algum serviço para processamento. Exemplo: classe CepSearchEndpoint
  que é o serviço REST responsável por buscar o CEP.
 
-- *Service*: interagem com a camada de repositório e domínio. Exemplo: CepSearchService que interage
-com o repositório de CEP para buscar o CEP.
+- *Service*: classes nessa camada interagem com outros serviços, com a camada de repositório e domínio. 
+Exemplo: CepSearchService que interage com o repositório de CEP para buscar o CEP.
 
-- *Repository*: interagem com o banco de dados e são responsáveis pelas operações de CRUD
+- *Repository*: classes que interagem com o banco de dados e são responsáveis pelas operações de CRUD
 nas entidades JPA. Exemplo: CepRepository que busca o CEP na base.
 
-- *Domain*: representam entidades que são criadas, atualizadas, pesquisadas e removidas da base de dados.
-Exemplo: classes Cep e Address
+- *Domain*: classes que representam entidades que são criadas, atualizadas, pesquisadas e removidas da base de dados.
+Exemplo: classes *Cep* e *Address*
 
 - Padrão de injeção de dependências: Aplicado com o uso do *framework* Spring, 
 facilitando código testável e reutilizável.
@@ -93,12 +93,19 @@ Um relacionamento unidirecional de *Address* para *Cep* foi criado, já que o CE
 Uma anotação para validar o CEP foi criada para ser utilizada pelo *HibernateValidator* para validar as requisições aos web-services REST
 com CEP mal formado.
 
+A classe *ReplaceRightDigitToZeroCepGenerator* é responsável por implementar a regra de substituição de um dígito da direita
+para a esquerda do CEP por zero. Ela é utilizada pelo serviço de busca de CEP *CepSearchServiceImpl* durante a busca de CEP.
+
+Esse serviço é utilizado também pelo serviço de busca de endereços, *AddressManagementServiceImpl* para validar buscar e validar
+a existência do CEP durante as operações de CRUD de endereço.
+
 As dependências entre as classes são injetadas via construtor (injeção via construtor).
 
 Todos os serviços e repositórios têm interfaces que facilitam a injeção de dependências e a 
 utilização de mocks durante os testes unitários. 
+
 As classes são desacopladas de uma implementação específica e interagem apenas com a interface, evidenciando
-como elas colaboram umas com as outras.
+como elas colaboram umas com as outras através da interface pública exposta por cada uma delas.
 
 ## Serviços REST
 
@@ -107,6 +114,23 @@ como elas colaboram umas com as outras.
 Respostas
 
 ● 200: Um CEP no formato JSON
+
+Exemplo: http://localhost:8080/cep/09371616
+
+```json
+{
+  "id": 4,
+  "value": "09371616",
+  "street": "Rua Deonildo Nincão",
+  "district": "Parque São Vicente",
+  "city": "Mauá",
+  "estate": "SP"
+}
+```
+
+● 200: Um CEP no formato JSON. 
+
+Este caso utiliza a substituição de um dígito da direita para esquerda por zero até que o CEP seja encontrado.
 
 Exemplo: http://localhost:8080/cep/61903123
 
