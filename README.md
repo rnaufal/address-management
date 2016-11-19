@@ -124,7 +124,8 @@ Exemplo: http://localhost:8080/cep/61903123
 ● 400: Cep inválido
 
 ```json
-{"errors": [
+{
+  "errors": [
     {
       "error": "CEP inválido"
     }
@@ -135,7 +136,8 @@ Exemplo: http://localhost:8080/cep/61903123
 ● 400: CEP não encontrado
 
 ```json
-{"errors": [ 
+{
+  "errors": [
     {
       "error": "Cep=[{cep}] nao encontrado"
     }
@@ -146,7 +148,8 @@ Exemplo: http://localhost:8080/cep/61903123
 ● 500: Erro interno
 
 ```json
-{"errors": [ 
+{
+  "errors": [
     {
       "error": "Erro inesperado. Tente novamente."
     }
@@ -304,7 +307,8 @@ Resposta:
 ● 500: Erro interno
 
 ```json
-{"errors": [ 
+{
+  "errors": [
     {
       "error": "Erro inesperado. Tente novamente."
     }
@@ -394,7 +398,8 @@ do endereço também são retornados.
 ● 500: Erro interno
 
 ```json
-{"errors": [ 
+{
+  "errors": [
     {
       "error": "Erro inesperado. Tente novamente."
     }
@@ -449,7 +454,8 @@ Resposta:
 ● 500: Erro interno
 
 ```json
-{"errors": [ 
+{
+  "errors": [
     {
       "error": "Erro inesperado. Tente novamente."
     }
