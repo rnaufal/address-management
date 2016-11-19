@@ -7,7 +7,7 @@ e produzem respostas em JSON. Foi escrito utilizando Java 1.8 e Gradle para *bui
 ## Pré-requisitos
 
 - Java 1.8 (de preferência 1.8.0_111)
-- Definição da variável de ambiente JAVA_HOME, que aponta para a instalação do JAVA
+- Definição da variável de ambiente *JAVA_HOME*, que aponta para a instalação do JAVA
 
 ## Configuração e Build
 
