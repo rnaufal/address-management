@@ -194,7 +194,7 @@ Respostas
 }
 ```
 
-Header *Location* contém a URL do endereço criado: http://localhost:8080/address/1
+*Header Location* contém a URL do endereço criado: http://localhost:8080/address/1
 
 ● 200: Caso o endereço com mesmo CEP, complemento e número exista, ele é retornado e um outro igual
 não é criado
