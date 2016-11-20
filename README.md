@@ -29,7 +29,7 @@ As seguintes tecnologias foram utilizadas:
 - jsonpath para fazer *asserts* do JSON retornado pelos web-services REST;
 - Gradle para *build* do projeto
 
-A aplicação deve ser construído na sua raiz com o seguinte comando:
+A aplicação deve ser construída na raiz do projeto address-management com o seguinte comando:
 
 ***./gradlew clean build*** (em sistemas Unix) e ***./gradlew.bat clean build*** (Windows)
 
