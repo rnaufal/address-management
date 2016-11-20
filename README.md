@@ -81,7 +81,7 @@ nas entidades JPA. Exemplo: *CepRepository* que busca o CEP na base.
 * *Domain*: classes que representam entidades que são criadas, atualizadas, pesquisadas e removidas da base de dados.
 Exemplo: classes *Cep* e *Address*
 
-* Padrão de injeção de dependências: Aplicado com o uso do *framework* Spring, facilitando código testável e reutilizável.
+* Padrão de injeção de dependências: Aplicado com o uso do *framework* Spring, facilitando código testável, mais claro e legível.
 
 Os dados de CEP são mocados e estão no arquivo data.sql, utilizado pelo banco em memória
 HSQLDB que carrega o arquivo quando a aplicação inicia. Dados de CEP não são alterados, apenas consultados.
