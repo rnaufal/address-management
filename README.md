@@ -58,9 +58,13 @@ Os testes integrados podem ser executados individualmente através do comando Gr
 
 ## Arquitetura e padrões
 
-É uma aplicação que utiliza como base o framework SpringBoot. 
+A aplicação possui os seguintes diretórios de código fonte:
 
-A aplicação está modelada com os seguintes padrões e separação de camadas:
+* *src/main/java*: Encontram-se as classes da aplicação;
+* *src/test/java*: Encontram-se os testes unitários da aplicação;
+* *src/integrationTest/java*: Encontram-se os testes integrados da aplicação;
+
+A aplicação utiliza como base o framework SpringBoot e está modelada com os seguintes padrões e separação de camadas:
 
 * *MVC*: *Endpoint* (*Controllers* REST), *Service*, *Repository* e *Domain*.
 
