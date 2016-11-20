@@ -79,7 +79,7 @@ Exemplo: CepSearchService que interage com o repositório de CEP para buscar o C
 nas entidades JPA. Exemplo: *CepRepository* que busca o CEP na base.
 
 * *Domain*: classes que representam entidades que são criadas, atualizadas, pesquisadas e removidas da base de dados.
-Exemplo: classes *Cep* e *Address*
+Exemplo: classes *Cep* e *Address*.
 
 * Padrão de injeção de dependências: Aplicado com o uso do *framework* Spring, facilitando código testável, mais claro e legível.
 
