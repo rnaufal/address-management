@@ -108,7 +108,7 @@ A entidade *Cep* não é atualizada, apenas a entidade *Address* que possui um *
 
 As dependências entre as classes são injetadas via construtor (injeção via construtor).
 
-Todos os serviços e repositórios têm interfaces que facilitam a injeção de dependências e a 
+Os serviços e repositórios têm interfaces que facilitam a injeção de dependências e a 
 utilização de mocks durante os testes unitários. 
 
 As classes são desacopladas de uma implementação específica e interagem apenas com a interface, evidenciando
