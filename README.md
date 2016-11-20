@@ -6,28 +6,28 @@ e produzem respostas em JSON. A aplicação foi desenvolvida utilizando Java 1.8
 
 ## Pré-requisitos
 
-- Java 1.8 (de preferência 1.8.0_111)
-- Definição da variável de ambiente *JAVA_HOME*, que aponta para a instalação do JAVA
+* Java 1.8 (de preferência 1.8.0_111)
+* Definição da variável de ambiente *JAVA_HOME*, que aponta para a instalação do JAVA
 
 ## Configuração e Build
 
 As seguintes tecnologias foram utilizadas:
 
-- Java 8;
-- SpringBoot;
-- RESTful Web-Services;
-- Hibernate Validator;
-- Spring Web MVC;
-- SpringData with JPA;
-- HSQLDB no modo em memória que foi populado com informações de CEP mocadas (arquivo data.sql no *classpath*);
-- Jetty;
-- Logback para logs;
-- JSON;
-- Google Guava para manter invariantes dos métodos (pré-condições sobre parâmetros que não podem ser nulos);
-- JUnit 4, Mockito e Spring-test para testes unitários e de integração;
-- Hamcrest matchers para tornar os *asserts* nos testes mais elegantes;
-- jsonpath para fazer *asserts* do JSON retornado pelos web-services REST;
-- Gradle para *build* do projeto
+* Java 8;
+* SpringBoot;
+* RESTful Web-Services;
+* Hibernate Validator;
+* Spring Web MVC;
+* SpringData with JPA;
+* HSQLDB no modo em memória que foi populado com informações de CEP mocadas (arquivo data.sql no *classpath*);
+* Jetty;
+* Logback para logs;
+* JSON;
+* Google Guava para manter invariantes dos métodos (pré-condições sobre parâmetros que não podem ser nulos);
+* JUnit 4, Mockito e Spring-test para testes unitários e de integração;
+* Hamcrest matchers para tornar os *asserts* nos testes mais elegantes;
+* jsonpath para fazer *asserts* do JSON retornado pelos web-services REST;
+* Gradle para *build* do projeto
 
 A aplicação deve ser construída na raiz do projeto address-management com o seguinte comando:
 
@@ -41,8 +41,8 @@ A aplicação deve ser iniciada na raiz do projeto address-management com o segu
 
 Esse comando realiza as seguintes tarefas: 
 
-- *build* da aplicação, execução dos testes unitários e integrados;
-- *Deploy* da aplicação no Jetty na porta 8080 se todos os testes unitários e integrados forem executados com sucesso;
+* *build* da aplicação, execução dos testes unitários e integrados;
+* *Deploy* da aplicação no Jetty na porta 8080 se todos os testes unitários e integrados forem executados com sucesso;
 
 Os logs da aplicação se encontram em */tmp/logs/address-management/address-management.log*
 
@@ -62,23 +62,22 @@ Os testes integrados podem ser executados individualmente através do comando Gr
 
 A aplicação está modelada com os seguintes padrões e separação de camadas:
 
-- *MVC*: *Endpoint* (*Controllers* REST), *Service*, *Repository* e *Domain*.
+* *MVC*: *Endpoint* (*Controllers* REST), *Service*, *Repository* e *Domain*.
 
-- *Endpoint (Controller)* : São responsáveis por receber a requisição http, consumir e produzir
- JSON e enviar a requisição para algum serviço para processamento. Exemplo: classe CepSearchEndpoint
+* *Endpoint (Controller)* : São responsáveis por receber a requisição http, consumir e produzir
+ JSON e enviar a requisição para algum serviço para processamento. Exemplo: classe *CepSearchEndpoint*
  que é o serviço REST responsável por buscar o CEP.
 
-- *Service*: classes nessa camada interagem com outros serviços, com a camada de repositório e domínio. 
+* *Service*: classes nessa camada interagem com outros serviços, com a camada de repositório e domínio. 
 Exemplo: CepSearchService que interage com o repositório de CEP para buscar o CEP.
 
-- *Repository*: classes que interagem com o banco de dados e são responsáveis pelas operações de CRUD
-nas entidades JPA. Exemplo: CepRepository que busca o CEP na base.
+* *Repository*: classes que interagem com o banco de dados e são responsáveis pelas operações de CRUD
+nas entidades JPA. Exemplo: *CepRepository* que busca o CEP na base.
 
-- *Domain*: classes que representam entidades que são criadas, atualizadas, pesquisadas e removidas da base de dados.
+* *Domain*: classes que representam entidades que são criadas, atualizadas, pesquisadas e removidas da base de dados.
 Exemplo: classes *Cep* e *Address*
 
-- Padrão de injeção de dependências: Aplicado com o uso do *framework* Spring, 
-facilitando código testável e reutilizável.
+* Padrão de injeção de dependências: Aplicado com o uso do *framework* Spring, facilitando código testável e reutilizável.
 
 Os dados de CEP são mocados e estão no arquivo data.sql, utilizado pelo banco em memória
 HSQLDB que carrega o arquivo quando a aplicação inicia. Dados de CEP não são alterados, apenas consultados.
