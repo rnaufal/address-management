@@ -2,7 +2,7 @@
 
 A aplicação contém web-services para busca de CEP e gerenciamento de endereços, que permite incluir, 
 consultar, atualizar e deletar um endereço. Este projeto possui web-services REST que consomem
-e produzem respostas em JSON. Foi escrito utilizando Java 1.8 e Gradle para *build* do projeto.
+e produzem respostas em JSON. A aplicação foi desenvolvida utilizando Java 1.8 e Gradle para *build* do projeto.
 
 ## Pré-requisitos
 
@@ -37,7 +37,7 @@ Esse comando utiliza o Gradle *wrapper* para baixar a distribuição do Gradle a
 
 ## Iniciando a aplicação
 
-A aplicação deve ser na raiz do projeto address-management com o seguinte comando Gradle: ***./gradlew bootRun***
+A aplicação deve ser iniciada na raiz do projeto address-management com o seguinte comando Gradle: ***./gradlew bootRun***
 
 Esse comando realiza as seguintes tarefas: 
 
